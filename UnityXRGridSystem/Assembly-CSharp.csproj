@@ -60,9 +60,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Grid\Grid.cs" />
     <Compile Include="Assets\Grid\GridBase.cs" />
     <Compile Include="Assets\Grid\GridMain.cs" />
-    <Compile Include="Assets\Grid\GridPayload.cs" />
     <Compile Include="Assets\Grid\GridRenderer.cs" />
     <Compile Include="Assets\Grid\Projector\Projector.cs" />
     <Compile Include="Assets\Interactable\Interactable.cs" />
