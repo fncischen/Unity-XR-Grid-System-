@@ -1,6 +1,8 @@
 # Unity XR Grid System
 A Snap Grid System Used To Help Organize Objects in 3D Space in VR/AR 
 
+**Note:** This project is still in edit mode. Download at your own risk. 
+
 # Summary #
 
 ##  Mission Statement : ##
