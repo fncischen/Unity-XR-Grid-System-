@@ -47,6 +47,11 @@ public class GridPayload : MonoBehaviour
 
     #endregion
 
+    #region public events
+    public delegate void OnGridSnapped(Vector3 pos, Interactable interactable);
+    public OnGridSnapped sendToLargerGrid; 
+    #endregion
+
     #region public configuration methods
 
     /// <summary>
@@ -98,6 +103,20 @@ public class GridPayload : MonoBehaviour
 
     #endregion
 
+    #region public collider methods
+
+    public void OnTriggerStay(Collider other)
+    {
+        if (other.GetComponent<Interactable>())
+        {
+            SnappingToGrid(other);
+            sendToLargerGrid?.Invoke(other.transform.position, other.GetComponent<Interactable>());
+        }
+
+    }
+
+    #endregion
+
     #region public grid interaction methods
 
     public void SnappingToGrid(Collider other)
@@ -110,12 +129,53 @@ public class GridPayload : MonoBehaviour
         other.transform.position = new Vector3(other.transform.position.x, other.transform.position.y + 15.0f, other.transform.position.z);
     }
 
+
+    /// <summary>
+    /// Transform an object from world space to grid space. 
+    /// </summary>
+    /// <param name="worldCoordinates"></param>
+    /// <returns></returns>
+    public Vector3 TranslateFromCoordinateSpaceToGridSpace(Vector3 worldCoordinates)
+    {
+        Vector3 gridCoordinates = new Vector3();
+        gridCoordinates = snapToGrid(worldCoordinates);
+
+        // after the object has been rounded, get the grid units, relative to origin.  
+        gridCoordinates.x = Mathf.FloorToInt(gridCoordinates.x - gridOrigin.x);
+        gridCoordinates.y = Mathf.FloorToInt(gridCoordinates.y - gridOrigin.y);
+        gridCoordinates.z = Mathf.FloorToInt(gridCoordinates.z - gridOrigin.z);
+
+        return gridCoordinates;
+    }
+
+    /// <summary>
+    /// Transform an object from grid space to world space. 
+    /// </summary>
+    /// <param name="gridCoordinates"></param>
+    /// <returns></returns>
+
+    public Vector3 TranslateFromGridSpaceToCoordinateSpace(Vector3 gridCoordinates)
+    {
+        Vector3 worldCoordinates = new Vector3();
+
+        worldCoordinates.x = gridCoordinates.x + gridOrigin.x;
+        worldCoordinates.y = gridCoordinates.y + gridOrigin.y;
+        worldCoordinates.z = gridCoordinates.z + gridOrigin.z;
+
+        return worldCoordinates;
+    }
+
+    /// <summary>
+    /// Snap existing position of an item to grid. 
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <returns></returns>
     public Vector3 snapToGrid(Vector3 pos)
     {
-        float shiftedX = Mathf.RoundToInt(pos.x / CellSize);
+        float shiftedX = Mathf.RoundToInt(pos.x / CellSize) + gridOrigin.x;
         //float shiftedY = Mathf.RoundToInt(pos.y / CellSize) + CellSize/2 + gridOrigin.y + 0.25f;
         float shiftedY = gridOrigin.y + 5f;
-        float shiftedZ = Mathf.RoundToInt(pos.z / CellSize);
+        float shiftedZ = Mathf.RoundToInt(pos.z / CellSize) + gridOrigin.z;
 
         Debug.Log("Before: " + new Vector3(pos.x, pos.y, pos.z));
         Debug.Log(new Vector3(shiftedX * CellSize + CellSize / 2 + gridOrigin.x, shiftedY, shiftedZ * CellSize + CellSize / 2 + gridOrigin.z));
@@ -128,6 +188,11 @@ public class GridPayload : MonoBehaviour
         Vector3 snappedPosition = new Vector3(shiftedX * CellSize + CellSize / 2, shiftedY, shiftedZ * CellSize + CellSize / 2 + gridOrigin.z);
 
         return snappedPosition;
+    }
+
+    public void generateInteractableClone(Vector3 coordinates, Interactable i)
+    {
+
     }
 
     #endregion

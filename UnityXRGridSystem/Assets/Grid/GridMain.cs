@@ -12,7 +12,9 @@ public class GridMain : MonoBehaviour
     public Vector3 to;
 
     public float scale; 
-
+    /// <summary>
+    /// This acts as the main control center / intermediary between two grids. 
+    /// </summary>
     private void Start()
     {
         gridTable.SetGridDimensions(gridOrigin, from, to);
@@ -25,9 +27,22 @@ public class GridMain : MonoBehaviour
         largerGrid.RenderGrid();
     }
 
-    public void GridTranslator(Vector3 tableCoordinates)
+    private void SetupEventSubscriptions()
     {
+        gridTable.sendToLargerGrid += GridTranslator;
+    }
 
+    private void GridTranslator(Vector3 tableCoordinates, Interactable interactable)
+    {
+        // step 1
+        Vector3 gridCoords = gridTable.TranslateFromCoordinateSpaceToGridSpace(tableCoordinates);
+        // step 2
+        Vector3 largerWorldGridCoords = largerGrid.TranslateFromGridSpaceToCoordinateSpace(gridCoords);
+        // step 3 
+        largerGrid.generateInteractableClone(largerWorldGridCoords, interactable);
+
+        // generate a separate game object 
+        // and then snap it onto grid 
     }
 
     
