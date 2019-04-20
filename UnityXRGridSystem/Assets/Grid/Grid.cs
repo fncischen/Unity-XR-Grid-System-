@@ -100,7 +100,9 @@ public class Grid : MonoBehaviour
 
     public void RescaleGrid(float scale)
     {
-        
+        CellSize *= scale;
+
+        ConfigureGrid();
     }
 
     #endregion

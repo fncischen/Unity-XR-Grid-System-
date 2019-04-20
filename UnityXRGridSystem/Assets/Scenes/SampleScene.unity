@@ -306,7 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridRenderer: {fileID: 730625555}
-  CellSize: 10
+  CellSize: 5
 --- !u!4 &730625557
 Transform:
   m_ObjectHideFlags: 0
