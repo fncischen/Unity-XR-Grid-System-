@@ -83,6 +83,6 @@ The Grid Verticies Payload represents a set of grid data which is sent to the Gr
 
 **calculateGridLengths()** : Calculates the start and end lengths of each grid line, based on the given public variables Vector3 from, Vector3 to, and Vector3 origin. 
 
-**setGridDimensions()** : Set the grid unit width, height, and depth of the grid, based on the values of the start and end lengths of each of the grid lines.
+**calculateGridDimensions()** : Set the grid unit width, height, and depth of the grid, based on the values of the start and end lengths of each of the grid lines.
 
 **generateGridVerticies()** : Populate the start and ends of each of the grid lines with vertice coordinaties, based on the start and end lengths of the grid. 
