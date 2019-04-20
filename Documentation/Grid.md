@@ -64,4 +64,16 @@ These represent the numbers of cells on each x, y, and z direction of the grid.
 ```
 private GridVerticiesPayload g;
 ```
-The Grid Verticies Payload represents a set of grid data which is sent to the GridRenderer Game Component for rendering. 
+The Grid Verticies Payload represents a set of grid data which is sent to the GridRenderer Game Component for rendering.
+
+### Public Events ###
+
+
+### Public Configuration Methods ###
+
+
+### Pubblic Collider Methods ###
+
+### Public Grid Interaction Methods ###
+
+### Private Helper Methods ### 
