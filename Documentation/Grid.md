@@ -40,8 +40,7 @@ private Vector3[,] zStart;
 private Vector3[,] zEnd;
 ```
 
-xStart, xEnd; yStart, yEnd; zStart, zEnd; represent all verticies that each line in the grid will connect to, respectively, 
-on the x, y, and z axis. 
+These represent all verticies that each line in the grid will connect to, respectively, on the x, y, and z axis. 
 
 ```
 private int xStartLength;
@@ -52,6 +51,7 @@ private int xEndLength;
 private int yEndLength;
 private int zEndLength;
 ```
+These represent the lengths of each x length, y length, and z length, starting from, respectively, the XY plane, the YZ plane, and XZ plane.
 
 ```
 private int xDimension;
@@ -59,6 +59,9 @@ private int yDimension;
 private int zDimension;
 ```
 
+These represent the numbers of cells on each x, y, and z direction of the grid. 
+
 ```
 private GridVerticiesPayload g;
 ```
+The Grid Verticies Payload represents a set of grid data which is sent to the GridRenderer Game Component for rendering. 
