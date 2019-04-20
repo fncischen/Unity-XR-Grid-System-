@@ -13,6 +13,9 @@ public class GridMain : MonoBehaviour
     public Vector3 from;
     public Vector3 to;
 
+    public bool enableGridTableCollider;
+    public bool enableWorldGridCollider;
+
     public float scale; 
     /// <summary>
     /// This acts as the main control center / intermediary between two grids. 
@@ -20,11 +23,13 @@ public class GridMain : MonoBehaviour
     private void Start()
     {
         // I want to be able to change the gridOrigin here every time 
+        gridTable.SetColliderStatus(enableGridTableCollider);
         gridTable.SetGridDimensions(gridOrigin, from, to);
         gridTable.ConfigureGrid();
         gridTable.RenderGrid();
 
         // But, I want to keep this static. 
+        largerGrid.SetColliderStatus(enableWorldGridCollider); 
         largerGrid.SetGridDimensions(worldOrigin, from, to);
         largerGrid.RescaleGrid(scale);
         largerGrid.ConfigureGrid();

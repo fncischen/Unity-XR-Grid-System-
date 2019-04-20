@@ -15,7 +15,6 @@ public class Grid : MonoBehaviour
     public Vector3 GridOrigin { get { return gridOrigin; } set { gridOrigin = value; } }
 
     public GridRenderer gridRenderer;
-
     public float CellSize;
 
     #endregion
@@ -53,6 +52,18 @@ public class Grid : MonoBehaviour
     #endregion
 
     #region public configuration methods
+
+    public void SetColliderStatus(bool colliderOn)
+    {
+        if(!colliderOn)
+        {
+            GetComponent<BoxCollider>().enabled = false;
+        }
+        else
+        {
+            GetComponent<BoxCollider>().enabled = true; 
+        }
+    }
 
     /// <summary>
     /// Constructor function that accepts a origin, startDimension, and endDimension to generate a grid.
