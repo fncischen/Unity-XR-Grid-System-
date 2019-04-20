@@ -60,7 +60,7 @@ public class Grid : MonoBehaviour
     /// <param name="o"></param>
     /// <param name="startDimensions"></param>
     /// <param name="endDimensions"></param>
-    public GridPayload(Vector3 origin, Vector3 startDimensions, Vector3 endDimensions)
+    public Grid(Vector3 origin, Vector3 startDimensions, Vector3 endDimensions)
     {
         gridOrigin = origin;
         from = startDimensions;
@@ -76,8 +76,8 @@ public class Grid : MonoBehaviour
 
     public void ConfigureGrid()
     {
+        calculateGridLengths();
         calculateGridDimensions();
-        setGridDimensions();
         generateGridVerticies();
         g = gridPayloadMaker();
     }
@@ -199,7 +199,7 @@ public class Grid : MonoBehaviour
 
     #region private helper methods
 
-    private void calculateGridDimensions()
+    private void calculateGridLengths()
     {
         xStartLength = Mathf.FloorToInt(from.x - gridOrigin.x);
         yStartLength = Mathf.FloorToInt(from.y - gridOrigin.y);
@@ -218,7 +218,7 @@ public class Grid : MonoBehaviour
         zEndLength = Mathf.Abs(zEndLength);
     }
 
-    private void setGridDimensions()
+    private void calculateGridDimensions()
     {
         xDimension = Mathf.Abs(xEndLength - xStartLength);
         yDimension = Mathf.Abs(yEndLength - yStartLength);

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GridMain : MonoBehaviour
 {
-    public GridPayload gridTable;
-    public GridPayload largerGrid; 
+    public Grid gridTable;
+    public Grid largerGrid; 
 
     public Vector3 gridOrigin;
     public Vector3 from;
