@@ -25,6 +25,8 @@ public class GridMain : MonoBehaviour
         largerGrid.RescaleGrid(scale);
         largerGrid.ConfigureGrid();
         largerGrid.RenderGrid();
+
+        SetupEventSubscriptions();
     }
 
     private void SetupEventSubscriptions()
@@ -41,8 +43,6 @@ public class GridMain : MonoBehaviour
         // step 3 
         largerGrid.generateInteractableClone(largerWorldGridCoords, interactable);
 
-        // generate a separate game object 
-        // and then snap it onto grid 
     }
 
     

@@ -74,29 +74,34 @@ public class Projector : MonoBehaviour
 #endregion
 
     #region private methods 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="gridPayload"></param>
+    /// <param name="i"></param>
     private void RenderGridTiles(GridVerticiesPayload gridPayload, Interactable i)
     {
         // use a circular render texture, that  
-        Ray cameraRay = Camera.main.ScreenPointToRay(new Vector3(Camera.main.pixelWidth / 2, Camera.main.pixelHeight / 2, 0));
-        RaycastHit hit;
+        //Ray cameraRay = Camera.main.ScreenPointToRay(new Vector3(Camera.main.pixelWidth / 2, Camera.main.pixelHeight / 2, 0));
+        //RaycastHit hit;
 
-        if (Physics.Raycast(cameraRay, out hit, 100f) & hit.collider.GetComponent<Floor>())
-        {
-            Vector3 floorPos = hit.collider.GetComponent<Floor>().transform.position;
-            circle.SetActive(true);
+        //if (Physics.Raycast(cameraRay, out hit, 100f) & hit.collider.GetComponent<Floor>())
+        //{
+        //    Vector3 floorPos = hit.collider.GetComponent<Floor>().transform.position;
+        //    circle.SetActive(true);
 
-            circle.transform.position = new Vector3(hit.point.x, floorPos.y, hit.point.z);
+        //    circle.transform.position = new Vector3(hit.point.x, floorPos.y, hit.point.z);
 
-            // You need a way to map the grid shaders w/ 
-            // relative to the mouse movement
+        //    // You need a way to map the grid shaders w/ 
+        //    // relative to the mouse movement
 
-        }
-        else
-        {
-            circle.SetActive(false);
+        //}
+        //else
+        //{
+        //    circle.SetActive(false);
 
 
-        }
+        //}
 
         //for (int x = 0; x < g.xDimension; x++)
         //{

@@ -40,7 +40,6 @@ public class GridBase : MonoBehaviour
     public Vector3 to;
 
     public GridRenderer gridRenderer;
-    public LargeGameSizeGrid largeGrid;
 
     // https://answers.unity.com/questions/1206632/trigger-event-on-variable-change.html
 
@@ -90,8 +89,6 @@ public class GridBase : MonoBehaviour
 
     #region Private variables
 
-
-    private Cell[] cells;
     private Vector3[,] vertices;
     private Vector3[] boundaries;
 

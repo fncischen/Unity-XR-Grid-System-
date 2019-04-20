@@ -12,7 +12,7 @@ public class Grid : MonoBehaviour
 
     public Vector3 To { get { return to; } set { to = value; } }
     public Vector3 From { get { return from; } set { from = value; } }
-    public Vector3 GridOrigin { get { return gridOrigin} set {gridOrigin = value }
+    public Vector3 GridOrigin { get { return gridOrigin; } set { gridOrigin = value; } }
 
     public GridRenderer gridRenderer;
 
@@ -69,15 +69,16 @@ public class Grid : MonoBehaviour
 
     public void SetGridDimensions(Vector3 origin, Vector3 startDimensions, Vector3 endDimensions)
     {
-        gridOrigin = origin;
-        from = startDimensions;
-        to = endDimensions;
+        GridOrigin = origin;
+        From = startDimensions;
+        To = endDimensions;
     }
 
     public void ConfigureGrid()
     {
         calculateGridLengths();
         calculateGridDimensions();
+        setUpGridVertices();
         generateGridVerticies();
         g = gridPayloadMaker();
     }
@@ -209,13 +210,6 @@ public class Grid : MonoBehaviour
         yEndLength = Mathf.FloorToInt(to.y - gridOrigin.y);
         zEndLength = Mathf.FloorToInt(to.z - gridOrigin.z);
 
-        xStartLength = Mathf.Abs(xStartLength);
-        yStartLength = Mathf.Abs(yStartLength);
-        zStartLength = Mathf.Abs(zStartLength);
-
-        xEndLength = Mathf.Abs(xEndLength);
-        yEndLength = Mathf.Abs(yEndLength);
-        zEndLength = Mathf.Abs(zEndLength);
     }
 
     private void calculateGridDimensions()
@@ -223,10 +217,35 @@ public class Grid : MonoBehaviour
         xDimension = Mathf.Abs(xEndLength - xStartLength);
         yDimension = Mathf.Abs(yEndLength - yStartLength);
         zDimension = Mathf.Abs(zEndLength - zStartLength);
+
+        Debug.Log(xDimension);
+    }
+
+    private void setUpGridVertices()
+    {
+        xStart = new Vector3[xDimension, zDimension];
+        xEnd = new Vector3[xDimension, zDimension];
+
+        // y axis end
+        yStart = new Vector3[yDimension, zDimension];
+        yEnd = new Vector3[yDimension, zDimension];
+
+        // z axis end 
+        zStart = new Vector3[xDimension, yDimension];
+        zEnd = new Vector3[xDimension, yDimension];
     }
 
     private void generateGridVerticies()
     {
+
+        xStartLength = Mathf.Abs(xStartLength);
+        yStartLength = Mathf.Abs(yStartLength);
+        zStartLength = Mathf.Abs(zStartLength);
+
+        xEndLength = Mathf.Abs(xEndLength);
+        yEndLength = Mathf.Abs(yEndLength);
+        zEndLength = Mathf.Abs(zEndLength);
+
         // x lines
         for (int x = 0; x < xDimension; x++)
         {
@@ -234,6 +253,8 @@ public class Grid : MonoBehaviour
             {
                 xStart[x, z] = new Vector3(CellSize * (x - xStartLength + gridOrigin.x), CellSize * (-yStartLength + gridOrigin.y), CellSize * (z - zStartLength + gridOrigin.z));
                 xEnd[x, z] = new Vector3(CellSize * (x - xStartLength + gridOrigin.x), CellSize * (yEndLength + gridOrigin.y), CellSize * (z - zStartLength + gridOrigin.z));
+
+                Debug.Log(xStart[x, z]);
             }
         }
 
