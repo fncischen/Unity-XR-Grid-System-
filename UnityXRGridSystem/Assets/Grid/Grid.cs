@@ -79,6 +79,7 @@ public class Grid : MonoBehaviour
         calculateGridLengths();
         calculateGridDimensions();
         setUpGridVertices();
+        setGridLengthsAbsValue();
         generateGridVerticies();
         g = gridPayloadMaker();
     }
@@ -235,9 +236,8 @@ public class Grid : MonoBehaviour
         zEnd = new Vector3[xDimension, yDimension];
     }
 
-    private void generateGridVerticies()
+    private void setGridLengthsAbsValue()
     {
-
         xStartLength = Mathf.Abs(xStartLength);
         yStartLength = Mathf.Abs(yStartLength);
         zStartLength = Mathf.Abs(zStartLength);
@@ -245,6 +245,10 @@ public class Grid : MonoBehaviour
         xEndLength = Mathf.Abs(xEndLength);
         yEndLength = Mathf.Abs(yEndLength);
         zEndLength = Mathf.Abs(zEndLength);
+    }
+
+    private void generateGridVerticies()
+    {
 
         // x lines
         for (int x = 0; x < xDimension; x++)
