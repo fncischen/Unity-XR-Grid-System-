@@ -30,7 +30,7 @@ Base class to handle all grid verticies, dimensions, snapping/unsnapping, and gr
 #### Private Variables ####
 
     
-    ```
+    
     private Vector3[,] xStart;
     private Vector3[,] xEnd;
 
@@ -39,9 +39,11 @@ Base class to handle all grid verticies, dimensions, snapping/unsnapping, and gr
 
     private Vector3[,] zStart;
     private Vector3[,] zEnd;
-    ```
 
-    ```
+    xStart, xEnd; yStart, yEnd; zStart, zEnd; represent all verticies that each line in the grid will connect to, respectively, 
+    on the x, y, and z axis. 
+
+
     private int xStartLength;
     private int yStartLength;
     private int zStartLength;
@@ -49,12 +51,11 @@ Base class to handle all grid verticies, dimensions, snapping/unsnapping, and gr
     private int xEndLength;
     private int yEndLength;
     private int zEndLength;
-    ```
+
 
     private int xDimension;
     private int yDimension;
     private int zDimension;
     
-    ```
+
     private GridVerticiesPayload g;
-    ```
