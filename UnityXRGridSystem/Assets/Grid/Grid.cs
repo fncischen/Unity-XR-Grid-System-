@@ -205,9 +205,21 @@ public class Grid : MonoBehaviour
         return snappedPosition;
     }
 
-    public void generateInteractableClone(Vector3 coordinates, Interactable i)
+    public Interactable generateInteractableClone(Vector3 coordinates, Interactable i)
     {
+        i.SetInteractableClass(Interactable.InteractableClass.Table);
+        Interactable worldInteractable = new Interactable();
 
+        worldInteractable.SetInteractableClass(Interactable.InteractableClass.World);
+        // Set Interactable Properties Here 
+
+        // Subscribe / Unsubscribe to Specific Events 
+
+        // note that we need to create the most amount of scripts such that
+        // the Interactable 
+
+        return worldInteractable;
+        // 
     }
 
     #endregion

@@ -50,7 +50,7 @@ public class GridMain : MonoBehaviour
         // step 2
         Vector3 largerWorldGridCoords = largerGrid.TranslateFromGridSpaceToCoordinateSpace(gridCoords);
         // step 3 
-        largerGrid.generateInteractableClone(largerWorldGridCoords, interactable);
+        Interactable newLink = largerGrid.generateInteractableClone(largerWorldGridCoords, interactable);
 
     }
 

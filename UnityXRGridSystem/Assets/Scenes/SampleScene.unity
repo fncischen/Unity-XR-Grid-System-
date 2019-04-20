@@ -414,6 +414,8 @@ MonoBehaviour:
   worldOrigin: {x: 0, y: 0, z: 0}
   from: {x: -10, y: -10, z: -10}
   to: {x: 10, y: 10, z: 10}
+  enableGridTableCollider: 1
+  enableWorldGridCollider: 0
   scale: 10
 --- !u!4 &1480574795
 Transform:

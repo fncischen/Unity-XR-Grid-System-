@@ -6,28 +6,40 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
 
+    #region Color Types To Indicate Status 
     public Color normal;
     public Color hovering;
     public Color selected;
-
-    private Rigidbody rb;
+    #endregion 
 
     public float grabDistanceRange;
 
+
+    public enum InteractableClass
+    {
+        Table,
+        World
+    }
+
+    public InteractableClass typeOfInteractable;
+
+
+    private Interactable interactablePair; 
     private float zCoord;
     private Vector3 zOffset; 
 
     public void Start()
     {
         normal = GetComponent<MeshRenderer>().material.color;
-        rb = GetComponent<Rigidbody>();
     }
 
 
     // There is a depth limit to OnMouseDown
     // https://stackoverflow.com/questions/33229623/sometimes-onmousedown-method-in-unity-executes-sometimes-it-does-not
 
-    public void OnMouseEnter()
+
+    #region public Mouse eventhandlers
+   public void OnMouseEnter()
     {
         Debug.Log("Entering object!");
     }
@@ -38,7 +50,6 @@ public class Interactable : MonoBehaviour
         SetUpOffSet();
     }
 
-    #region public Mouse eventhandlers
     public void OnMouseDrag()
     {
         Debug.Log("Selecting object");
@@ -64,6 +75,39 @@ public class Interactable : MonoBehaviour
         onObjectDeselected();
     }
     #endregion
+
+    #region InteractableTableModifier 
+    
+    public void setInteractableLink(Interactable interactableToLink)
+    {
+
+    }
+
+    #endregion
+
+    #region Public Interactable Links Methods 
+
+    public void SetInteractableClass(InteractableClass type)
+    {
+
+    }
+
+
+    public void EnableEventSubscribers()
+    {
+
+
+
+    }
+
+    public void DisableEventSubscribers()
+    {
+
+
+
+    }
+
+    #endregion 
 
     #region private Object modifiers
 
@@ -107,5 +151,6 @@ public class Interactable : MonoBehaviour
     }
 
     #endregion
+
 
 }
