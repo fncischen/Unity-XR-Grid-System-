@@ -71,6 +71,9 @@ The Grid Verticies Payload represents a set of grid data which is sent to the Gr
 
 ### Public Configuration Methods ###
 
+**ConfigureGrid()** : Initializes the grid dimensions, cell size, verticies, and prepares the Grid Payload to send to the Grid Renderer.
+
+**RenderGrid()** : Makes a call to the Grid Renderer Game Component renderer method, UpdateRender() to render the Grid, based on data sent by the Grid Payload argument. 
 
 ### Pubblic Collider Methods ###
 
