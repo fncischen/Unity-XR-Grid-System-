@@ -8,6 +8,8 @@ public class GridMain : MonoBehaviour
     public Grid largerGrid; 
 
     public Vector3 gridOrigin;
+
+    public Vector3 worldOrigin;
     public Vector3 from;
     public Vector3 to;
 
@@ -17,11 +19,13 @@ public class GridMain : MonoBehaviour
     /// </summary>
     private void Start()
     {
+        // I want to be able to change the gridOrigin here every time 
         gridTable.SetGridDimensions(gridOrigin, from, to);
         gridTable.ConfigureGrid();
         gridTable.RenderGrid();
 
-        largerGrid.SetGridDimensions(gridOrigin, from, to);
+        // But, I want to keep this static. 
+        largerGrid.SetGridDimensions(worldOrigin, from, to);
         largerGrid.RescaleGrid(scale);
         largerGrid.ConfigureGrid();
         largerGrid.RenderGrid();

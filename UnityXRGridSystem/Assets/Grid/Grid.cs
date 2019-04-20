@@ -205,13 +205,13 @@ public class Grid : MonoBehaviour
 
     private void calculateGridLengths()
     {
-        xStartLength = Mathf.FloorToInt(from.x - gridOrigin.x);
-        yStartLength = Mathf.FloorToInt(from.y - gridOrigin.y);
-        zStartLength = Mathf.FloorToInt(from.z - gridOrigin.z);
+        xStartLength = Mathf.FloorToInt(from.x);
+        yStartLength = Mathf.FloorToInt(from.y);
+        zStartLength = Mathf.FloorToInt(from.z);
 
-        xEndLength = Mathf.FloorToInt(to.x - gridOrigin.x);
-        yEndLength = Mathf.FloorToInt(to.y - gridOrigin.y);
-        zEndLength = Mathf.FloorToInt(to.z - gridOrigin.z);
+        xEndLength = Mathf.FloorToInt(to.x);
+        yEndLength = Mathf.FloorToInt(to.y);
+        zEndLength = Mathf.FloorToInt(to.z);
 
     }
 
@@ -247,6 +247,7 @@ public class Grid : MonoBehaviour
         xEndLength = Mathf.Abs(xEndLength);
         yEndLength = Mathf.Abs(yEndLength);
         zEndLength = Mathf.Abs(zEndLength);
+
     }
 
     private void generateGridVerticies()
@@ -257,10 +258,9 @@ public class Grid : MonoBehaviour
         {
             for (int z = 0; z < zDimension; z++)
             {
-                xStart[x, z] = new Vector3(CellSize * (x - xStartLength + gridOrigin.x), CellSize * (-yStartLength + gridOrigin.y), CellSize * (z - zStartLength + gridOrigin.z));
-                xEnd[x, z] = new Vector3(CellSize * (x - xStartLength + gridOrigin.x), CellSize * (yEndLength + gridOrigin.y), CellSize * (z - zStartLength + gridOrigin.z));
+                xStart[x, z] = new Vector3(CellSize * (x - xStartLength) + gridOrigin.x, CellSize * (-yStartLength) + gridOrigin.y, CellSize * (z - zStartLength) + gridOrigin.z);
+                xEnd[x, z] = new Vector3(CellSize * (x - xStartLength) + gridOrigin.x, CellSize * (yEndLength) + gridOrigin.y, CellSize * (z - zStartLength) + gridOrigin.z);
 
-                Debug.Log(xStart[x, z]);
             }
         }
 
@@ -268,8 +268,8 @@ public class Grid : MonoBehaviour
         {
             for (int z = 0; z < zDimension; z++)
             {
-                yStart[y, z] = new Vector3(CellSize * (-xStartLength + gridOrigin.x), CellSize * (y - yStartLength + gridOrigin.y), CellSize * (z - zStartLength + gridOrigin.z));
-                yEnd[y, z] = new Vector3(CellSize * (xEndLength + gridOrigin.x), CellSize * (y - yStartLength + gridOrigin.y), CellSize * (z - zStartLength + gridOrigin.z));
+                yStart[y, z] = new Vector3(CellSize * (-xStartLength) + gridOrigin.x, CellSize * (y - yStartLength) + gridOrigin.y, CellSize * (z - zStartLength) + gridOrigin.z);
+                yEnd[y, z] = new Vector3(CellSize * (xEndLength) + gridOrigin.x, CellSize * (y - yStartLength) + gridOrigin.y, CellSize * (z - zStartLength) + gridOrigin.z);
             }
         }
 
@@ -278,8 +278,8 @@ public class Grid : MonoBehaviour
         {
             for (int y = 0; y < yDimension; y++)
             {
-                zStart[x, y] = new Vector3(CellSize * (x - xStartLength + gridOrigin.x), CellSize * (y - yStartLength + gridOrigin.y), CellSize * (-zStartLength + gridOrigin.z));
-                zEnd[x, y] = new Vector3(CellSize * (x - xStartLength + gridOrigin.x), CellSize * (y - yStartLength + gridOrigin.y), CellSize * (zEndLength + gridOrigin.z));
+                zStart[x, y] = new Vector3(CellSize * (x - xStartLength) + gridOrigin.x, CellSize * (y - yStartLength) + gridOrigin.y, CellSize * (-zStartLength) + gridOrigin.z);
+                zEnd[x, y] = new Vector3(CellSize * (x - xStartLength) + gridOrigin.x, CellSize * (y - yStartLength) + gridOrigin.y, CellSize * (zEndLength) + gridOrigin.z);
             }
         }
 
