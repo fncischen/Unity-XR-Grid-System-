@@ -12,6 +12,8 @@
 
 ## Private Touch Recognizers ## 
 
+These methods were inspired by the Apple Swift iOS Gesture Recognizer Object Interface. 
+
 **TapGestureRecognizer()** :
 
 **LongPressGestureRecognizer()**:
