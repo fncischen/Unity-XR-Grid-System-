@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct InteractablePayload
+{
+
+}
+
 [RequireComponent(typeof(Rigidbody))]
 public class Interactable : MonoBehaviour
 {
@@ -26,7 +31,52 @@ public class Interactable : MonoBehaviour
 
     private Interactable interactablePair; 
     private float zCoord;
-    private Vector3 zOffset; 
+    private Vector3 zOffset;
+
+    #region public Interactable events
+
+    // use these events to send messages to methods / other components which are connected to this interactable
+    // to call specific methods 
+
+    public delegate void OnInteracted(InteractablePayload g);
+
+    // these account for both mouse plus touch events 
+
+    public event OnInteracted GridTouched;
+
+    public event OnInteracted OnObjectHover;
+
+    public event OnInteracted OnObjectNearTouched; 
+    public event OnInteracted OnObjectTouched;
+    public event OnInteracted OnObjectUnTouched; 
+
+    // for ARKit -> you're limited to the touch, tap, and drag actions
+    // you can't differentiate by button input
+     
+    public event OnInteracted OnObjectGrabbed;
+    public event OnInteracted OnObjectUnGrabbed; 
+
+    public event OnInteracted OnObjectSnapped;
+    public event OnInteracted OnObjectUnSnapped; 
+
+    // pain point: I don't want to bind all objects to these events
+    // since this leads to a situation where
+
+    // i.e. Interactable a is a public Interactable for 100+ game objects.
+    // but that Interactable is very unique
+
+    // you could get around this by keeping the Interactable undefined until
+    // there is a collision with another gameObject 
+
+    // i.e. OnTriggerEnter() -> set the currentObjectInteractable equal to this Interactable
+    // set up event subscription 
+
+        // if the object is snapping to the controller
+        // set the controller's current Interactable to equal this.
+        // do the appropriate event subscriptions on the Controller
+
+    #endregion 
+
 
     public void Start()
     {
@@ -88,19 +138,25 @@ public class Interactable : MonoBehaviour
     #region Public Interactable Links Methods 
 
     public void SetInteractableClass(InteractableClass type)
+    { 
+        typeOfInteractable = type; 
+    }
+
+    // enable these event subscribers when a new Interactable is made.
+    // this type of methods are SPECIFIC to this game 
+
+    // are we merely subscribing two Interactables together?
+    // this method should just be enabling subscriptions among interactables 
+    public void EnableEventSubscribersBetweenInteractables()
     {
+
+
 
     }
 
-
-    public void EnableEventSubscribers()
-    {
-
-
-
-    }
-
-    public void DisableEventSubscribers()
+    // disable these event subscribers when a Interactable is deleted.
+    // this method should just be disabling subscriptions among interactables 
+    public void DisableEventSubscribersBetweenInteractables()
     {
 
 
@@ -152,5 +208,8 @@ public class Interactable : MonoBehaviour
 
     #endregion
 
+    #region ManagingEventSubscriptions
+
+    #endregion 
 
 }
