@@ -27,19 +27,36 @@ namespace UnityEngine.XR.ARFoundation
             World
         }
 
-        public InteractableClass typeOfInteractable;
+        public enum PanPlane
+        {
+            xz,
+            xy,
+            yz
+        }
 
+        public InteractableClass typeOfInteractable;
+        public PanPlane panplane; 
 
         private Interactable interactablePair;
         private float zCoord;
         private Vector3 zOffset;
 
+        #region public Interactable events // non VR
+
+        public event OnInteract onTapped;
+        public event OnInteract onPanned;
+        public event OnInteract onRotated;
+        public event OnInteract onScaled;  
+
+        #endregion
+
         #region public Interactable events  // for VR only
 
         // use these events to send messages to methods / other components which are connected to this interactable
         // to call specific methods 
-
+        
         public delegate void OnInteracted(InteractablePayload g);
+        public delegate void OnInteract(); 
 
         // these account for both mouse plus touch events 
 
@@ -93,14 +110,18 @@ namespace UnityEngine.XR.ARFoundation
 
         private void EnableSubscriptions()
         {
-            subscribeToTouchEvents(GestureType.PinchGesture, rescaleObject);
-            subscribeToTouchEvents(GestureType.RotateGesture, rotateObject);
+            //subscribeToTouchEvents(GestureType.PinchGesture, rescaleObject);
+            //subscribeToTouchEvents(GestureType.RotateGesture, rotateObject);
+            //subscribeToTouchEvents(GestureType.TapGesture, tapObject);
+            //subscribeToTouchEvents(GestureType.PanGesture, panObject);
         }
 
         private void DisableSubscriptions()
         {
-            unsubscribeToTouchEvents(GestureType.PinchGesture, rescaleObject);
-            unsubscribeToTouchEvents(GestureType.RotateGesture, rotateObject);
+            //unsubscribeToTouchEvents(GestureType.PinchGesture, rescaleObject);
+            //unsubscribeToTouchEvents(GestureType.RotateGesture, rotateObject);
+            //unsubscribeToTouchEvents(GestureType.TapGesture, tapObject);
+            //unsubscribeToTouchEvents(GestureType.PanGesture, panObject);
         }
 
 
@@ -204,7 +225,7 @@ namespace UnityEngine.XR.ARFoundation
 
         private void onObjectGrab()
         {
-            transform.position = getMouseWorldPos() + zOffset;
+            //transform.position = getMouseWorldPos() + zOffset;
         }
 
         private void onObjectUngrab()
@@ -227,16 +248,24 @@ namespace UnityEngine.XR.ARFoundation
         #endregion
 
         #region gesture callbackMethods
+        public void tapObject(TouchGesturePayload t)
+        {
+
+        }
+
+        public void panObject(TouchGesturePayload t)
+        {
+
+        }
+
         public void rescaleObject(TouchGesturePayload t)
         {
-            Debug.Log("Interactable rescaling");
-            transform.localScale = new Vector3(transform.localScale.x+t.touchDelta,transform.localScale.y+t.touchDelta, transform.localScale.z+t.touchDelta);
+
         }
 
         public void rotateObject(TouchGesturePayload t)
         {
-            Debug.Log("Interactable rotating");
-            transform.Rotate(0f,t.touchDelta,0f);
+
         }
         #endregion 
 
