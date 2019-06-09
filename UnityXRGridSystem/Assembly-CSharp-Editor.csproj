@@ -60,23 +60,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\UnityARKitPlugin\Examples\UnityParticlePainter\HSVPicker\Editor\BoxSliderEditor.cs" />
-    <Compile Include="Assets\UnityARKitPlugin\Plugins\iOS\UnityARKit\Editor\UnityARBuildPostprocessor.cs" />
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/gitrepos/Unity-XR-Grid-System-/UnityXRGridSystem/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>D:/gitrepos/Unity-XR-Grid-System-/UnityXRGridSystem/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>D:/gitrepos/Unity-XR-Grid-System-/UnityXRGridSystem/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/gitrepos/Unity-XR-Grid-System-/UnityXRGridSystem/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>D:/gitrepos/Unity-XR-Grid-System-/UnityXRGridSystem/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
-    </Reference>
+    <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\ARCoreRequiredMenuItem.cs" />
+    <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\BuildHelper.cs" />
     <Reference Include="Unity.XR.ARKit">
       <HintPath>D:/gitrepos/Unity-XR-Grid-System-/UnityXRGridSystem/Library/ScriptAssemblies/Unity.XR.ARKit.dll</HintPath>
     </Reference>
@@ -95,17 +80,32 @@
     <Reference Include="Unity.XR.ARFoundation.Editor">
       <HintPath>D:/gitrepos/Unity-XR-Grid-System-/UnityXRGridSystem/Library/ScriptAssemblies/Unity.XR.ARFoundation.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.TextMeshPro.Editor">
+      <HintPath>D:/gitrepos/Unity-XR-Grid-System-/UnityXRGridSystem/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.XR.ARFoundation">
       <HintPath>D:/gitrepos/Unity-XR-Grid-System-/UnityXRGridSystem/Library/ScriptAssemblies/Unity.XR.ARFoundation.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.ARCore.Editor">
       <HintPath>D:/gitrepos/Unity-XR-Grid-System-/UnityXRGridSystem/Library/ScriptAssemblies/Unity.XR.ARCore.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.PackageManagerUI.Editor">
+      <HintPath>D:/gitrepos/Unity-XR-Grid-System-/UnityXRGridSystem/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.CollabProxy.Editor">
+      <HintPath>D:/gitrepos/Unity-XR-Grid-System-/UnityXRGridSystem/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.XR.ARExtensions">
       <HintPath>D:/gitrepos/Unity-XR-Grid-System-/UnityXRGridSystem/Library/ScriptAssemblies/Unity.XR.ARExtensions.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.ARExtensions.Editor">
       <HintPath>D:/gitrepos/Unity-XR-Grid-System-/UnityXRGridSystem/Library/ScriptAssemblies/Unity.XR.ARExtensions.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>D:/gitrepos/Unity-XR-Grid-System-/UnityXRGridSystem/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.DataPrivacy">
+      <HintPath>D:/gitrepos/Unity-XR-Grid-System-/UnityXRGridSystem/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="Unity.XR.ARKit.Editor">
       <HintPath>D:/gitrepos/Unity-XR-Grid-System-/UnityXRGridSystem/Library/ScriptAssemblies/Unity.XR.ARKit.Editor.dll</HintPath>
