@@ -32,6 +32,8 @@ namespace UnityEngine.XR.ARFoundation
         private Vector3[,] zStart;
         private Vector3[,] zEnd;
 
+        private Vector3[,,] gridCellPositions;
+
         private int xStartLength;
         private int yStartLength;
         private int zStartLength;
@@ -44,7 +46,8 @@ namespace UnityEngine.XR.ARFoundation
         private int yDimension;
         private int zDimension;
 
-        private GridVerticiesPayload g;
+        [SerializeField]
+        public GridVerticiesPayload g;
 
         #endregion
 
@@ -94,6 +97,7 @@ namespace UnityEngine.XR.ARFoundation
             setUpGridVertices();
             setGridLengthsAbsValue();
             generateGridVerticies();
+            generateGridCellPositions();
             g = gridPayloadMaker();
         }
 
@@ -310,6 +314,21 @@ namespace UnityEngine.XR.ARFoundation
 
         }
 
+        public void generateGridCellPositions()
+        {
+            gridCellPositions = new Vector3[xDimension, yDimension, zDimension];
+            for (int x = 0; x < xDimension; x++)
+            {
+                for (int y = 0; y < yDimension; y++)
+                {
+                    for (int z = 0; z < zDimension; z++)
+                    {
+                        gridCellPositions[x, y, z] = new Vector3(CellSize * (x - xStartLength) + gridOrigin.x + CellSize / 2, CellSize * (y - yStartLength) + gridOrigin.y + CellSize / 2, CellSize * (z - zStartLength) + gridOrigin.z + CellSize/2);
+                    }
+                }
+            }
+        }
+
         private GridVerticiesPayload gridPayloadMaker()
         {
             GridVerticiesPayload g = new GridVerticiesPayload();
@@ -330,6 +349,8 @@ namespace UnityEngine.XR.ARFoundation
 
             g.zStart = zStart;
             g.zEnd = zEnd;
+
+            g.gridCellsPositions = gridCellPositions;
 
             return g;
         }

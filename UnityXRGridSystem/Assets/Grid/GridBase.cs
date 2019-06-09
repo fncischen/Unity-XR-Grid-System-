@@ -21,6 +21,8 @@ public struct GridVerticiesPayload
     public int yDimension;
     public int zDimension;
 
+    public Vector3[,,] gridCellsPositions; 
+
     public float CellSize; 
 }
 

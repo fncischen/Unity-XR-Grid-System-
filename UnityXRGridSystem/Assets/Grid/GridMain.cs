@@ -25,6 +25,24 @@ namespace UnityEngine.XR.ARFoundation
         private void Start()
         {
             // I want to be able to change the gridOrigin here every time 
+            //gridTable.SetColliderStatus(enableGridTableCollider);
+            //gridTable.SetGridDimensions(gridOrigin, from, to);
+            //gridTable.ConfigureGrid();
+            //gridTable.RenderGrid();
+
+            // But, I want to keep this static. 
+            //largerGrid.SetColliderStatus(enableWorldGridCollider);
+            //largerGrid.SetGridDimensions(worldOrigin, from, to);
+            //largerGrid.RescaleGrid(scale);
+            //largerGrid.ConfigureGrid();
+            //largerGrid.RenderGrid();
+
+            //SetupEventSubscriptions();
+        }
+
+        public void SetGrids()
+        {
+            // I want to be able to change the gridOrigin here every time 
             gridTable.SetColliderStatus(enableGridTableCollider);
             gridTable.SetGridDimensions(gridOrigin, from, to);
             gridTable.ConfigureGrid();
@@ -36,8 +54,6 @@ namespace UnityEngine.XR.ARFoundation
             largerGrid.RescaleGrid(scale);
             largerGrid.ConfigureGrid();
             largerGrid.RenderGrid();
-
-            //SetupEventSubscriptions();
         }
 
         //private void SetupEventSubscriptions()
